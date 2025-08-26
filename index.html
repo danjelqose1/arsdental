@@ -68,17 +68,48 @@
 <header class="site-header">
   <div class="container nav">
     <div class="brand">
-      <img src="assets/logo.svg" alt="Ars Dental logo" width="28" height="28">
+      <!-- Inline SVG logo so it never 404s on mobile/CDN -->
+      <svg class="logo" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#dfe8f1"/></linearGradient></defs>
+        <rect width="128" height="128" rx="24" fill="#eef5fb"/>
+        <path d="M64 20c-18 0-28 10-28 24 0 11 6 18 10 22 4 5 7 19 10 26 2 5 7 6 10 0 3-7 6-21 10-26 4-4 10-11 10-22 0-14-10-24-28-24z"
+              fill="url(#g)" stroke="#c5d6e6" stroke-width="2"/>
+        <circle cx="78" cy="46" r="4" fill="#9cc1dd"/>
+      </svg>
       <span>Ars Dental</span>
-      <span class="badge">5.0★ • 81+ reviews</span>
+      <span class="badge hide-sm">5.0★ • 81+ reviews</span>
     </div>
-    <nav>
+
+    <!-- Desktop nav -->
+    <nav class="nav-links">
       <a href="#services" data-i18n="nav_services">Services</a>
       <a href="#doctors" data-i18n="nav_doctors">Doctors</a>
       <a href="#reviews" data-i18n="nav_reviews">Reviews</a>
       <a href="#contact" class="cta" data-i18n="nav_contact">Contact</a>
     </nav>
-    <div class="lang-toggle" aria-label="Language">
+
+    <!-- Desktop language toggle -->
+    <div class="lang-toggle hide-sm" aria-label="Language">
+      <button data-lang="en" onclick="setLang('en')" class="active">EN</button>
+      <button data-lang="sq" onclick="setLang('sq')">SQ</button>
+      <button data-lang="it" onclick="setLang('it')">IT</button>
+    </div>
+
+    <!-- Mobile menu button -->
+    <button class="menu-btn show-sm" aria-expanded="false" aria-controls="mobile-drawer" onclick="toggleMenu()">
+      ☰
+    </button>
+  </div>
+
+  <!-- Mobile drawer -->
+  <div id="mobile-drawer" class="mobile-drawer">
+    <a href="#services" onclick="toggleMenu(false)" data-i18n="nav_services">Services</a>
+    <a href="#doctors" onclick="toggleMenu(false)" data-i18n="nav_doctors">Doctors</a>
+    <a href="#reviews" onclick="toggleMenu(false)" data-i18n="nav_reviews">Reviews</a>
+    <a href="#contact" onclick="toggleMenu(false)" class="cta" data-i18n="nav_contact">Contact</a>
+
+    <div class="lang-toggle" style="margin-top:12px">
       <button data-lang="en" onclick="setLang('en')" class="active">EN</button>
       <button data-lang="sq" onclick="setLang('sq')">SQ</button>
       <button data-lang="it" onclick="setLang('it')">IT</button>
