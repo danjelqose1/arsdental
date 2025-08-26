@@ -14,15 +14,37 @@
     <div class="brand">
       <img class="logo" src="assets/logo.svg" alt="Ars Dental logo" />
       <span>Ars Dental</span>
-      <span class="badge">5.0★ • 81+ reviews</span>
+      <span class="badge hide-sm">5.0★ • 81+ reviews</span>
     </div>
-    <nav>
+
+    <!-- Desktop nav -->
+    <nav class="nav-links">
       <a href="#services" data-i18n="nav_services">Services</a>
       <a href="#doctors" data-i18n="nav_doctors">Doctors</a>
       <a href="#reviews" data-i18n="nav_reviews">Reviews</a>
       <a href="#contact" class="cta" data-i18n="nav_contact">Contact</a>
     </nav>
-    <div class="lang-toggle" aria-label="Language">
+
+    <!-- Desktop language -->
+    <div class="lang-toggle hide-sm" aria-label="Language">
+      <button data-lang="en" onclick="setLang('en')" class="active">EN</button>
+      <button data-lang="sq" onclick="setLang('sq')">SQ</button>
+      <button data-lang="it" onclick="setLang('it')">IT</button>
+    </div>
+
+    <!-- Mobile menu button -->
+    <button class="menu-btn show-sm" aria-expanded="false" aria-controls="mobile-drawer" onclick="toggleMenu()">
+      ☰
+    </button>
+  </div>
+
+  <!-- Mobile drawer -->
+  <div id="mobile-drawer" class="mobile-drawer">
+    <a href="#services" onclick="toggleMenu(false)" data-i18n="nav_services">Services</a>
+    <a href="#doctors" onclick="toggleMenu(false)" data-i18n="nav_doctors">Doctors</a>
+    <a href="#reviews" onclick="toggleMenu(false)" data-i18n="nav_reviews">Reviews</a>
+    <a href="#contact" onclick="toggleMenu(false)" class="cta" data-i18n="nav_contact">Contact</a>
+    <div class="lang-toggle" style="margin-top:12px">
       <button data-lang="en" onclick="setLang('en')" class="active">EN</button>
       <button data-lang="sq" onclick="setLang('sq')">SQ</button>
       <button data-lang="it" onclick="setLang('it')">IT</button>
@@ -124,7 +146,7 @@
   <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 </footer>
 
-<script src="script.js?v=2" defer></script>
+<script src="script.js?v=4" defer></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCM04BP4_MSxQrruEZqjEjJKaqOTG3fGSU&libraries=places&callback=initPlaces"></script>
 </body>
 </html>
