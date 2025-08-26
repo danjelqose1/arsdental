@@ -25,3 +25,9 @@ if (form) {
     window.open('https://wa.me/355699490443' + '?text=' + text, '_blank');
   });
 }
+function toggleMenu(force) {
+  const open = (typeof force === 'boolean') ? force : !document.body.classList.contains('menu-open');
+  document.body.classList.toggle('menu-open', open);
+  const btn = document.querySelector('.menu-btn');
+  if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
