@@ -47,14 +47,63 @@ if(form){
 
 // === Google Places Reviews ===
 function initPlaces() {
+  const wrap = document.getElementById('g-reviews');
+  if (!wrap) return;
+
   const svc = new google.maps.places.PlacesService(document.createElement('div'));
   const req = {
-    placeId: 'ChIJ38ZjtQXbTxMRvbaNBIbZgUg',
+    placeId: 'ChIJ38ZjtQXbTxMRvbaNBIbZgUg', // Ars Dental
     fields: ['name','url','rating','user_ratings_total','reviews']
   };
+
   svc.getDetails(req, (place, status) => {
-    if (status !== google.maps.places.PlacesServiceStatus.OK || !place) return;
-    const wrap = document.getElementById('g-reviews');
+    if (status !== google.maps.places.PlacesServiceStatus.OK || !place) {
+      console.error('Places error:', status);
+      wrap.innerHTML = '<div class="card"><p class="small">Couldn’t load Google reviews right now.</p></div>';
+      return;
+    }
+
     wrap.innerHTML = '';
     (place.reviews || []).slice(0,6).forEach(r=>{
-      const card=document.createElement('
+      const card=document.createElement('div');
+      card.className='card review-card';
+
+      const avatar=document.createElement('img');
+      avatar.src=r.profile_photo_url||'';
+      avatar.alt=r.author_name||'User';
+      card.appendChild(avatar);
+
+      const body=document.createElement('div');
+      body.className='review-body';
+
+      const name=document.createElement('strong');
+      name.textContent=r.author_name||'Patient';
+      body.appendChild(name);
+
+      const stars=document.createElement('div');
+      stars.className='stars';
+      const rating=Math.round(r.rating||0);
+      stars.innerHTML=Array.from({length:5}).map((_,i)=>`<span class="star ${i<rating?'on':''}">★</span>`).join('');
+      body.appendChild(stars);
+
+      const meta=document.createElement('div');
+      meta.className='review-meta';
+      meta.textContent=r.relative_time_description||'';
+      body.appendChild(meta);
+
+      const text=document.createElement('div');
+      text.className='review-text';
+      text.textContent=r.text||'';
+      body.appendChild(text);
+
+      card.appendChild(body);
+      wrap.appendChild(card);
+    });
+
+    const link=document.getElementById('g-place-link');
+    if (link && place.url) {
+      link.href=place.url;
+      document.getElementById('g-reviews-cta').style.display='block';
+    }
+  });
+}
