@@ -47,6 +47,7 @@ input, textarea { padding: 12px 14px; border-radius: 10px; border: 1px solid #d7
 input:focus, textarea:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 4px var(--ring); }
 .badge { display:inline-block; padding:6px 10px; background:#ecfeff; border:1px solid #bae6fd; color:#0369a1; border-radius:999px; font-size:12px; font-weight:700; }
 /* Mobile menu + small-screen polish */
+
 .logo { width:28px; height:28px; border-radius:6px; box-shadow:0 2px 10px rgba(2,132,199,.12); }
 .hide-sm { display:inline-block; }
 .show-sm { display:none; }
