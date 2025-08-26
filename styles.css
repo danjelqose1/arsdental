@@ -92,3 +92,11 @@ input:focus,textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0
 
 body.menu-open { overflow:hidden; }
 body.menu-open .mobile-drawer { display:block; }
+
+/* Adjust new logo */
+.logo {
+  height: 42px;      /* you can tweak size */
+  width: auto;
+  border-radius: 0;  /* remove rounded corners from old placeholder */
+  box-shadow: none;  /* remove old drop shadow */
+}
