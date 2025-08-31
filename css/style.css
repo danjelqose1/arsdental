@@ -9329,3 +9329,204 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+/* Theme overrides: centralize primary color */
+:root {
+  /* Sand palette only */
+  --theme-primary: #dbca96; /* sand dark */
+  --theme-primary-600: #e7dab3; /* sand light (used on hover) */
+  --theme-primary-700: #dbca96; /* same as primary to avoid extra tones */
+  --theme-on-primary: #1f2937; /* readable dark text on sand */
+  --theme-surface-1: #e7dab3; /* light sand */
+  --theme-surface-2: #dbca96; /* dark sand */
+}
+
+/* Optional alternative palettes (use by adding class to <body>) */
+.theme-teal {
+  --theme-primary: #14b8a6;
+  --theme-primary-600: #0d9488;
+  --theme-primary-700: #0f766e;
+}
+.theme-purple {
+  --theme-primary: #7c3aed;
+  --theme-primary-600: #6d28d9;
+  --theme-primary-700: #5b21b6;
+}
+.theme-emerald {
+  --theme-primary: #10b981;
+  --theme-primary-600: #059669;
+  --theme-primary-700: #047857;
+}
+
+/* Primary utility colors */
+.text-primary { color: var(--theme-primary) !important; }
+.bg-primary { background-color: var(--theme-primary) !important; background: var(--theme-primary) !important; }
+.border-primary { border-color: var(--theme-primary) !important; }
+
+/* Light surfaces (keep Bootstrap defaults elsewhere; target specific blocks below) */
+
+/* Buttons */
+.btn-primary {
+  color: var(--theme-on-primary);
+  background-color: var(--theme-primary);
+  border-color: var(--theme-primary);
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  color: var(--theme-on-primary);
+  background-color: var(--theme-primary-600);
+  border-color: var(--theme-primary-600);
+}
+.btn-primary:focus,
+.btn-primary.focus {
+  box-shadow: 0 0 0 0.2rem rgba(219, 202, 150, 0.35);
+}
+.btn-outline-primary {
+  color: var(--theme-primary);
+  border-color: var(--theme-primary);
+}
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active {
+  color: var(--theme-on-primary);
+  background-color: var(--theme-primary);
+  border-color: var(--theme-primary);
+}
+
+/* Template-specific selectors that used a fixed blue */
+.btn.btn-primary {
+  background: var(--theme-primary);
+  border-color: var(--theme-primary);
+  color: var(--theme-on-primary);
+}
+.btn.btn-primary:hover {
+  border-color: var(--theme-primary);
+  background: transparent;
+  color: var(--theme-primary);
+}
+.btn.btn-primary.btn-outline-primary {
+  border-color: var(--theme-primary);
+  background: transparent;
+  color: var(--theme-primary);
+}
+.btn.btn-primary.btn-outline-primary:hover {
+  border-color: transparent;
+  background: var(--theme-primary);
+  color: var(--theme-on-primary);
+}
+
+/* Link accents */
+a { color: var(--theme-primary); }
+a:hover, a:focus { color: var(--theme-primary-600); }
+
+/* Navbar state accents */
+.ftco-navbar-light.scrolled .nav-item.active > a { color: var(--theme-primary) !important; }
+.ftco-navbar-light.scrolled .nav-item.cta > a { background: var(--theme-primary) !important; }
+.ftco-navbar-light .navbar-nav > .nav-item.cta.cta-colored span { border-color: var(--theme-primary) !important; }
+
+/* Intro color blocks and gradients */
+.ftco-intro .color-1 { background: var(--theme-surface-1) !important; }
+.ftco-intro .color-2 { background: var(--theme-surface-2) !important; }
+.ftco-intro .color-3 { background: linear-gradient(135deg, var(--theme-surface-2) 0%, var(--theme-surface-1) 100%) !important; }
+
+/* Section overlay gradient */
+.ftco-section .overlay { background: linear-gradient(135deg, var(--theme-surface-2) 0%, var(--theme-surface-1) 100%) !important; }
+
+/* Headings: use plain text color (no gradient box) */
+.heading-section h2 {
+  background: none !important;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
+  color: inherit !important;
+}
+/* White heading variant */
+.heading-section.heading-section-white h2 {
+  background: none !important;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
+  color: #fff !important;
+}
+
+/* Outline-white button hover uses primary */
+.btn.btn-outline-white:hover,
+.btn.btn-outline-white:focus,
+.btn.btn-outline-white:active { color: var(--theme-primary) !important; }
+
+/* Pagination and inputs */
+.block-27 ul li a, .block-27 ul li span { color: var(--theme-primary) !important; border-color: var(--theme-surface-2) !important; }
+.block-27 ul li.active a, .block-27 ul li.active span { background: var(--theme-surface-2) !important; color: var(--theme-primary) !important; border-color: transparent !important; }
+.block-17 form .search-submit { background: var(--theme-primary) !important; border: 2px solid var(--theme-primary) !important; color: var(--theme-on-primary) !important; }
+.block-8 .accordion-item .heading > a[aria-expanded="true"]:before { background: var(--theme-primary) !important; color: var(--theme-on-primary) !important; border-color: var(--theme-primary) !important; }
+
+/* Sand palette backgrounds for content boxes */
+/* About section box */
+.about-wrap {
+  background: linear-gradient(135deg, var(--theme-surface-2) 0%, var(--theme-surface-1) 100%) !important;
+  color: #1f2937 !important;
+}
+.about-wrap .list-services .text h3 { color: #1f2937 !important; }
+.about-wrap .list-services .icon span { color: #1f2937 !important; }
+.about-wrap .list-services .icon:after { border-color: rgba(0, 0, 0, 0.12) !important; }
+
+/* Our Approach (quote) left column */
+.ftco-quote .choose {
+  background: linear-gradient(135deg, var(--theme-surface-2) 0%, var(--theme-surface-1) 100%) !important;
+  border-radius: 4px;
+}
+.ftco-quote .choose p,
+.ftco-quote .choose li { color: #1f2937 !important; }
+.ftco-quote .choose .un-styled li span { color: #1f2937 !important; }
+.ftco-quote .choose .heading-section.heading-section-white h2,
+.ftco-quote .choose .heading-section.heading-section-white .subheading,
+.ftco-quote .choose .heading-section.heading-section-white p { color: #1f2937 !important; }
+
+/* Achievements left aside heading area */
+.ftco-counter .aside-stretch {
+  background: linear-gradient(135deg, var(--theme-surface-2) 0%, var(--theme-surface-1) 100%) !important;
+  border-radius: 4px;
+}
+.ftco-counter .aside-stretch .heading-section-white h2,
+.ftco-counter .aside-stretch .heading-section-white p { color: #1f2937 !important; }
+
+/* Global aside-stretch override (used on multiple pages) */
+.aside-stretch {
+  background: linear-gradient(135deg, var(--theme-surface-2) 0%, var(--theme-surface-1) 100%) !important;
+}
+.aside-stretch:after {
+  background: linear-gradient(135deg, var(--theme-surface-2) 0%, var(--theme-surface-1) 100%) !important;
+}
+
+/* Tabs/Pills: replace blue with sand palette */
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: var(--theme-on-primary) !important;
+  background-color: var(--theme-primary) !important;
+  border-color: var(--theme-primary) !important;
+}
+.ftco-section .nav-pills .nav-link {
+  color: var(--theme-primary) !important;
+  border-bottom: 1px solid var(--theme-primary) !important;
+}
+.ftco-section .nav-pills .nav-link.active,
+.ftco-section .nav-pills .nav-link:hover {
+  color: var(--theme-on-primary) !important;
+  background: var(--theme-primary) !important;
+  border: 1px solid var(--theme-primary) !important;
+}
+
+/* Pricing: replace blue accents with sand palette */
+.pricing-entry p .price { color: var(--theme-primary) !important; }
+.pricing-entry:hover, .pricing-entry:focus { border: 1px solid var(--theme-primary) !important; }
+.pricing-entry.active { border: 1px solid var(--theme-primary) !important; }
+.pricing-entry .button .btn.btn-outline-primary {
+  background: #fff !important;
+  border: 1px solid #eaeaea !important;
+  color: #777 !important;
+}
+.pricing-entry:hover .button .btn.btn-outline-primary,
+.pricing-entry.active .button .btn.btn-outline-primary,
+.pricing-entry:focus .button .btn.btn-outline-primary {
+  background: var(--theme-primary) !important;
+  border: 1px solid var(--theme-primary) !important;
+  color: var(--theme-on-primary) !important;
+}
